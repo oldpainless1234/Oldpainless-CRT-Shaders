@@ -1,0 +1,107 @@
+shaders =  12 
+shader0 =   shaders/guest/advanced/stock.slang 
+filter_linear0 =  false 
+scale_type_x0 =  source 
+scale_x0 =  1.000000 
+scale_type_y0 =  source 
+scale_y0 =  1.000000 
+shader1 =   shaders/guest/advanced/stock.slang 
+filter_linear1 =  false 
+alias1 =  StockPass 
+shader2 =   shaders/guest/advanced/afterglow0.slang 
+filter_linear2 =  false 
+alias2 =  AfterglowPass 
+shader3 =   shaders/guest/advanced/pre-shaders-afterglow.slang 
+filter_linear3 =  false 
+wrap_mode3 =  clamp_to_border 
+mipmap_input3 =  true 
+alias3 =  PrePass 
+shader4 =   shaders/guest/advanced/avg-lum.slang 
+filter_linear4 =  true 
+alias4 =  AvgLumPass 
+shader5 =   shaders/guest/advanced/linearize.slang 
+filter_linear5 =  true 
+alias5 =  LinearizePass 
+float_framebuffer5 =  true 
+shader6 =   shaders/guest/advanced/gaussian_horizontal.slang 
+filter_linear6 =  true 
+shader7 =   shaders/guest/advanced/gaussian_vertical.slang 
+filter_linear7 =  true 
+alias7 =  GlowPass 
+shader8 =   shaders/guest/advanced/bloom_horizontal.slang 
+filter_linear8 =  true 
+shader9 =   shaders/guest/advanced/bloom_vertical.slang 
+filter_linear9 =  true 
+alias9 =  BloomPass 
+shader10 =   shaders/guest/advanced/crt-guest-advanced.slang 
+filter_linear10 =  true 
+scale_type_x10 =  viewport 
+scale_type_y10 =  viewport 
+shader11 =   shaders/guest/advanced/deconvergence.slang 
+filter_linear11 =  true 
+
+; === COLOR & CORE SHORTHAND ARCHITECTURE ===
+CS =  0.000000                  
+CP =  0.000000                  ; CRT Profile OFF - Absolute Neutral Baseline (Stops dark crushing)
+TNTC =  1.000000                ; LUT Colors Selector: Active (Loads SamplerLUT1 file natively)
+LS =  32.000000                 ; LUT Size: 32x32 Grid Matrix
+sat =  1.000000                 ; Unity-Gain Saturation Match (Prevents double-filtering)
+wp_saturation =  1.100000       ; White Point Saturation Leash
+WP =  0.000000                  ; Neutral Sony D65 Anchor
+GAMMA_INPUT =  2.500000         ; Input Gamma: 7.5 IRE Pedestal Anchor
+gamma_out =  2.250000           ; Output Gamma: Sony High-Voltage Jump
+
+; === RE-AUDITED LUMA SYSTEM INTERFACE ===
+post_br =  1.150000             ; Drives output past wire grille to counteract mask absorption
+brightboost =  1.250000         ; Restores clear broadcast mid-tones
+brightboost1 =  0.850000        ; Regulates low-frequency highlight bloom capping
+scangamma =  2.400000           ; Scanline Gamma Depth Anchor
+contr =  0.150000               ; Dark Trench Contrast Depth Offset
+pre_bb =  1.000000              ; Pre-Brightness Boost
+sega_fix =  0.000000            ; SEGA Fix OFF
+BP =  0.100000                  ; Black Point Baseline Offset
+
+; === PHOSPHOR GLOW CASCADE PASSES ===
+mask_bloom =  1.200000          ; Contained from 1.35 to isolate wire reflections
+glow =  0.450000                ; Core Glow Strength (Ionized Gas Haze)
+halation =  0.180000            ; Restores sharp text highlights on glass
+s_sharp =  0.080000             ; [HORIZONTAL SHIELD]: Erases aspect scaling waves cleanly inside the gun pass
+
+; === THE INTERLACE JITTER CIRCUIT ===
+inter =  375.000000             ; Interlace Activation Threshold Trigger Level
+interm =  1.000000              ; Interlace Mode Switch Flag
+ilaced =  0.100000              ; 10% active line separation depth
+
+; === BGR CORRECTED DECONVERGENCE ALIGNMENT ===
+deconrr =  -0.060000            ; Corrected to track your panel's native BGR layout coordinates
+deconrb =  0.060000             ; Corrected to track your panel's native BGR layout coordinates
+deconrry =  0.040000            ; Vertical red deconvergence tracking
+deconrby =  -0.040000           ; Vertical blue deconvergence tracking
+decons =  1.000000              ; Deconvergence Module Switch (ON)
+vigstr =  0.120000              ; Bowl Depth
+vigdef =  3.000000              ; Vignette Curve Definition
+
+; === PHYSICAL SUBSTRUCTURE (THE WRGB SMOOTHED HANDSHAKE) ===
+shadowMask =  10.000000         ; CRT Mask Type: Sony Aperture Grille Wires
+masksize =  1.000000            ; Restores razor 1:1 vertical wire luster at 4K density
+mask_layout =  1.000000         ; Aperture Grille Subpixel Layout: BGR Native
+mask_zoom =  -1.000000          ; Strict Integer Alignment Lock (No Blur)
+smoothmask =  0.120000          ; [THE GLASS PROXY]: 12% phase blending emulates wire-mesh glass refraction and WRGB symmetry
+
+; === ELECTRON GUN SONY FOCUS (HARD BROADCAST CONVERGENCE) ===
+gsl =  2.000000                 ; Hard vertical scanline focus trench
+scanline1 =  9.000000           ; Scanline Darkening Spine Base Weight
+beam_min =  1.050000            ; Preserved at stable reference focus
+beam_max =  1.050000            ; Restores razor-sharp vertical scanline definition
+warpX =  0.030000               ; Horizontal Screen Curvature Warp
+warpY =  0.040000               ; Vertical Screen Curvature Warp
+
+textures =  SamplerLUT1;SamplerLUT2;SamplerLUT3;SamplerLUT4 
+SamplerLUT1 =   shaders/guest/advanced/lut/sony-xbr-chemical.png 
+SamplerLUT1_linear =  true 
+SamplerLUT2 =   shaders/guest/advanced/lut/inv-trinitron-lut.png 
+SamplerLUT2_linear =  true 
+SamplerLUT3 =   shaders/guest/advanced/lut/nec-lut.png 
+SamplerLUT3_linear =  true 
+SamplerLUT4 =   shaders/guest/advanced/lut/ntsc-lut.png 
+SamplerLUT4_linear =  true 
