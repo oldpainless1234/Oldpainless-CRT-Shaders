@@ -1,0 +1,107 @@
+shaders = "12"
+shader0 = "crt/shaders/guest/advanced/stock.slang"
+filter_linear0 = "false"
+scale_type_x0 = "source"
+scale_x0 = "1.000000"
+scale_type_y0 = "source"
+scale_y0 = "1.000000"
+shader1 = "crt/shaders/guest/advanced/stock.slang"
+filter_linear1 = "false"
+alias1 = "StockPass"
+shader2 = "crt/shaders/guest/advanced/afterglow0.slang"
+filter_linear2 = "false"
+alias2 = "AfterglowPass"
+shader3 = "crt/shaders/guest/advanced/pre-shaders-afterglow.slang"
+filter_linear3 = "false"
+wrap_mode3 = "clamp_to_border"
+mipmap_input3 = "true"
+alias3 = "PrePass"
+shader4 = "crt/shaders/guest/advanced/avg-lum.slang"
+filter_linear4 = "true"
+alias4 = "AvgLumPass"
+shader5 = "crt/shaders/guest/advanced/linearize.slang"
+filter_linear5 = "true"
+alias5 = "LinearizePass"
+float_framebuffer5 = "true"
+shader6 = "crt/shaders/guest/advanced/gaussian_horizontal.slang"
+filter_linear6 = "true"
+shader7 = "crt/shaders/guest/advanced/gaussian_vertical.slang"
+filter_linear7 = "true"
+alias7 = "GlowPass"
+shader8 = "crt/shaders/guest/advanced/bloom_horizontal.slang"
+filter_linear8 = "true"
+shader9 = "crt/shaders/guest/advanced/bloom_vertical.slang"
+filter_linear9 = "true"
+alias9 = "BloomPass"
+shader10 = "crt/shaders/guest/advanced/crt-guest-advanced.slang"
+filter_linear10 = "true"
+scale_type_x10 = "viewport"
+scale_type_y10 = "viewport"
+shader11 = "crt/shaders/guest/advanced/deconvergence.slang"
+filter_linear11 = "true"
+
+; === COLOR & CORE SHORTHAND ARCHITECTURE ===
+CS = "0.000000"                 ; Display Gamut Mode: sRGB Mode
+CP = "0.000000"                 ; CRT Profile OFF - Neutral Baseline (Stops dark crushing)
+TNTC = "1.000000"               ; LUT Colors Index Selector: Active (Loads SamplerLUT1 natively)
+LS = "32.000000"                ; LUT Size: 32x32 Stripe Matrix Match
+sat = "1.000000"                ; Unity-Gain Saturation Match (Prevents double-filtering)
+wp_saturation = "1.000000"      ; White Point Saturation Leash
+WP = "0.000000"                 ; Neutral White Point (Custom file handles shift)
+GAMMA_INPUT = "2.500000"        ; Input Gamma: 7.5 IRE Pedestal Anchor
+gamma_out = "2.100000"          ; Output Gamma: Logarithmic Chassis Slope
+
+; === RE-AUDITED LUMA SYSTEM INTERFACE ===
+post_br = "1.150000"            ; Master output drive counteracts mask line absorption
+brightboost = "1.250000"        ; Provides stable mid-tone contrast without clipping
+brightboost1 = "0.850000"       ; Regulates low-frequency highlight bloom capping
+scangamma = "2.550000"          ; Scanline Gamma Depth (Pulls Cobalt Blue out of the mud)
+contr = "0.000000"              ; Extra Contrast Offset
+pre_bb = "1.000000"             ; Pre-Brightness Boost
+sega_fix = "0.000000"           ; SEGA Fix OFF
+BP = "0.100000"                 ; Black Point Baseline Offset
+
+; === PHOSPHOR GLOW CASCADE PASSES ===
+mask_bloom = "1.300000"         ; Contained to isolate font elements
+glow = "0.550000"               ; Core Glow Strength (Ionized Gas Haze Fill)
+halation = "0.220000"           ; Halation Depth (Thick Arcade Tube Glass)
+s_sharp = "0.080000"            ; [HORIZONTAL SHIELD]: Erases aspect scaling waves without bleeding
+
+; === THE INTERLACE JITTER CIRCUIT (v27.2 SYSTEM MATCH) ===
+inter = "375.000000"            ; Interlace Activation Threshold Trigger Level
+interm = "1.000000"             ; Interlace Mode Switch Flag
+ilaced = "0.200000"             ; 20% active line separation depth
+
+; === NANAO "BLEED" DECONVERGENCE ===
+deconrr = "0.080000"            ; Deconvergence Red Horizontal Offset
+deconrb = "-0.080000"           ; Deconvergence Blue Horizontal Offset
+deconrry = "0.050000"           ; Deconvergence Red Vertical Offset
+deconrby = "-0.050000"          ; Deconvergence Blue Vertical Offset
+decons = "1.000000"             ; Deconvergence Module Switch (ON)
+vigstr = "0.120000"             ; Bowl Depth
+vigdef = "3.000000"             ; Vignette Curve Definition
+
+; === PHYSICAL SUBSTRUCTURE (THE ARCADE REBOUND CORE) ===
+shadowMask = "6.000000"         ; CRT Mask Type: Nanao Honeycomb Dot-Mask
+masksize = "2.000000"           ; CRT Mask Size: 4K Density for KD-55A85
+mask_layout = "1.000000"        ; Slot Mask Subpixel Layout: BGR Native
+mask_zoom = "-1.000000"         ; Strict Integer Alignment Lock (No Blur)
+smoothmask = "0.200000"         ; [THE GLASS PROXY]: 20% horizontal blend emulates MS9 leaded glass light rebound
+
+; === ELECTRON GUN FOCUS (NANAO STABLE FOCUS RESTORED) ===
+gsl = "1.000000"                ; Softer vertical blending (The Nanao Creamy Way)
+scanline1 = "7.500000"          ; Scanline Darkening Spine Base Weight
+beam_min = "1.350000"           ; Preserved at stable reference focus
+beam_max = "1.050000"           ; Preserved at stable reference focus
+warpX = "0.030000"              ; Horizontal Screen Curvature Warp
+warpY = "0.040000"              ; Vertical Screen Curvature Warp
+
+textures = "SamplerLUT1;SamplerLUT2;SamplerLUT3;SamplerLUT4"
+SamplerLUT1 = "crt/shaders/guest/advanced/lut/astro-nanao-chemical.png"
+SamplerLUT1_linear = "true"
+SamplerLUT2 = "crt/shaders/guest/advanced/lut/inv-trinitron-lut.png"
+SamplerLUT2_linear = "true"
+SamplerLUT3 = "crt/shaders/guest/advanced/lut/nec-lut.png"
+SamplerLUT3_linear = "true"
+SamplerLUT4 = "crt/shaders/guest/advanced/lut/ntsc-lut.png"
+SamplerLUT4_linear = "true"
