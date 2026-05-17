@@ -6,8 +6,8 @@ These presets are engineered strictly for 4K self-emissive WRGB WOLED panels (te
 * **Hard-Locked Subpixel Purity:** `smoothmask` is held tightly to preserve un-diluted color chemistry and first-glow volume.
 * **Symmetric Phase Alignment:** `s_sharp` acts as a horizontal-only phase filter to crush non-integer aspect scaling waves (e.g., PC Engine 256px) inside the gun pass, keeping vertical scanline trenches perfectly dark and deep.
 * **WRGB Gate Alignment:** Modified phase windows absorb the horizontal spatial offset caused by the panel's physical White subpixel gate, releasing massive 3D optical pop.
-* - **High-Fidelity Grid Alignment:** Uses custom viewport mapping to eliminate standard down-sampling, locking rendering to full resolution for pixel-perfect triad alignment.
-- **Insulated Pipeline Processing:** Chains the multi-pass layout to protect color chemistry profiles from mid-stream compression, ensuring high-contrast scanlines.
+* **High-Fidelity Grid Alignment:** Uses custom viewport mapping to eliminate standard down-sampling, locking rendering to full resolution for pixel-perfect triad alignment.
+* **Insulated Pipeline Processing:** Chains the multi-pass layout to protect color chemistry profiles from mid-stream compression, ensuring high-contrast scanlines.
 
 
 ## 🎨 3D Color LUT Chemistry Mapping
