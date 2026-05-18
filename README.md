@@ -36,7 +36,7 @@ To eliminate repository bloat and ensure plug-and-play simplicity for the commun
 ### 🛠️ Technical Change Control Matrix
 The v33.0 LCD variant profiles take our frozen v32.0 core engine snapshots and implement a precise 3-point mathematical refactor to flatten the pipeline for flat linear matrices, ensuring absolute zero visual regression:
 
-*   **High-Fidelity Grid Alignment:** By stripping away the horizontal phase cushions (`smoothmask = 0.000000`), the mask engine completely deactivates the light-bleeding layers originally needed to mask the physical white subpixel gate of WOLED glass. The emulated slot-mask dot-triads and aperture grille wires resolve with raw, uncompressed pixel bite.
+*   **High-Fidelity Grid Alignment:** By stripping away the horizontal phase cushions (smoothmask = 0.000000), the mask engine completely deactivates the light-bleeding layers originally needed to mask the physical white subpixel gate of WOLED glass. The emulated slot-mask dot-triads and aperture grille wires resolve with raw, uncompressed pixel bite.
 *   **Symmetric Gun Precision:** Adjusting the subtractive horizontal sharpness boundaries stabilizes edge tracking within the horizontal signal plane. Non-integer horizontal aspect stretching waves are cleanly erased without introducing any vertical scanline row bleeding or contrast loss.
 *   **Chassis Geometry & Decay Preservation:** All underlying CRT profile characteristics—including the active dual-axis spherical tube warping for the Nanao honeycomb profile, the horizontal-only cylindrical bow for the Trinitron wire mesh profile, and the custom high-retention phosphor persistence decay loops—remain entirely untouched.
 
